@@ -1,0 +1,27 @@
+{
+  "name": "ricequant-mac-address",
+  "version": "1.0.0",
+  "description": "Get MAC address for ricequant realtrading",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lithium2013/ricequant-mac-address.git"
+  },
+  "keywords": [
+    "ricequant",
+    "MAC"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lithium2013/ricequant-mac-address/issues"
+  },
+  "homepage": "https://github.com/lithium2013/ricequant-mac-address#readme",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "macaddress": "^0.2.8"
+  }
+}
