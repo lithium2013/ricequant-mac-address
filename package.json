@@ -4,7 +4,10 @@
   "description": "Get MAC address for ricequant realtrading",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dev": "electron main.js"
   },
   "repository": {
     "type": "git",
@@ -14,14 +17,24 @@
     "ricequant",
     "MAC"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "lithium",
+  "license": "",
   "bugs": {
     "url": "https://github.com/lithium2013/ricequant-mac-address/issues"
   },
   "homepage": "https://github.com/lithium2013/ricequant-mac-address#readme",
   "dependencies": {
+    "electron": "^1.6.11",
     "koa": "^2.3.0",
     "macaddress": "^0.2.8"
+  },
+  "devDependencies": {
+    "electron-builder": "^19.13.0"
+  },
+  "build": {
+    "appId": "com.ricequant.macaddress",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   }
 }
