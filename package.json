@@ -24,17 +24,21 @@
   },
   "homepage": "https://github.com/lithium2013/ricequant-mac-address#readme",
   "dependencies": {
-    "electron": "^1.6.11",
     "koa": "^2.3.0",
     "macaddress": "^0.2.8"
   },
   "devDependencies": {
+    "electron": "^1.6.11",
     "electron-builder": "^19.13.0"
   },
   "build": {
     "appId": "com.ricequant.macaddress",
+    "copyright": "Lithium",
     "mac": {
       "category": "your.app.category.type"
+    },
+    "win": {
+      "target": "zip"
     }
   }
 }
