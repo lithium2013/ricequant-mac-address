@@ -12,11 +12,18 @@ const start = (port = DEFAULT_PORT) => {
 
 	app.use(async (ctx, next) => {
 	    return new Promise((resolve, reject) => {
-	        macaddress.one((err, mac) => {
+	        macaddress.all((err, result) => {
 	            if (err) {
 	                return reject(err);
 	            }
-	            ctx.body = mac;
+				for (var iface in result) {
+					let ip = result[iface]["ipv4"],
+						mac = result[iface]["mac"];
+					if ( ip && mac ) {
+						ctx.body = `${ip}_${mac}`;
+						break;
+					}
+				}
 	            resolve();
 	        });
 	    });

@@ -30,7 +30,6 @@ function createWindow () {
   });
 
   server.start();
-  //mainWindow.webContents.openDevTools()
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
