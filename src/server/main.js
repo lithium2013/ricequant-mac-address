@@ -2,6 +2,8 @@ const macaddress = require('macaddress');
 const http = require('http');
 const Koa = require('koa');
 const app = new Koa();
+const sys = require('util');
+const exec = require('child_process').exec;
 const DEFAULT_PORT = 10888;
 let curPort,
 	server,
@@ -11,20 +13,26 @@ const start = (port = DEFAULT_PORT) => {
 	if (running) return;
 
 	app.use(async (ctx, next) => {
+		let ip, mac, hdSerial;
+
 	    return new Promise((resolve, reject) => {
 	        macaddress.all((err, result) => {
 	            if (err) {
 	                return reject(err);
 	            }
 				for (var iface in result) {
-					let ip = result[iface]["ipv4"],
-						mac = result[iface]["mac"];
+					ip = result[iface]["ipv4"];
+					mac = result[iface]["mac"];
+
 					if ( ip && mac ) {
-						ctx.body = `${ip}_${mac}`;
 						break;
 					}
 				}
-	            resolve();
+				exec("wmic DISKDRIVE get SerialNumber", (err, stdout, stderr) => {
+					hdSerial = stdout.split('\n')[1].match(/[a-zA-Z0-9]+/)[0];
+					ctx.body = JSON.stringify({ ip, mac, hdSerial });
+	            	resolve();
+				});
 	        });
 	    });
 	});
